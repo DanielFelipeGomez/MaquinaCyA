@@ -1,0 +1,26 @@
+for (int i = 1; i <= number; ++i) {
+
+int factorial = 1;
+pepe
+double facu = 3.0; //facu
+erjjew
+wefw
+__GCC_ATOMIC_WCHAR_T_LOCK_FREEfw
+ewf
+                                for (int i = 1; i <= number; ++i) {
+int limit;
+faacundo
+                  int a = 'e'; //pepepepeppepepep
+int
+int fac;
+while(aux == false) {
+//facu
+andwfads
+frienddf
+sc
+
+int main () {
+                       double b{3.2}; //pepe facundo èeknd iwje sdijjs
+
+for (int i = 1; i <= number; ++i) {
+                  for (int i = 1; i <= number; ++i);

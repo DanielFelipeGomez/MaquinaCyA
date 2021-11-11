@@ -1,0 +1,37 @@
+/**
+ * This is a test
+ * 
+ * This is a Complex hello world program
+ */
+
+#include <iostream>
+
+int manin() {
+  double ten_one{10.0000001};
+  // Clearly the word world
+  int w = 'w';
+  int o{'o'};
+  int r;
+  r = 'r';
+  int l('l');
+  /**
+   * And here is the int = 'd'
+  */
+  int  d      =      'd';
+
+  double useless_variable;
+  for (int i{1}; i < 0; ++i) { // A never-starting loop
+    std::cout << "Bye World!";
+  }
+
+  double one = 0.9999999;
+  bool truue{true};
+  while (truue) {
+    std::cout << "Eleven? " << ten_one + one << std::endl;
+    // Not truue anymore
+    truue = false;
+  }
+  std::cout << "Hello " << char(w) << char(o) << char(r) << char(l) << char(d)
+            << std::endl;
+  while (false) {}
+}

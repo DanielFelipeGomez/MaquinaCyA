@@ -1,0 +1,31 @@
+#include <iostream>
+#include <regex>
+#include <string>
+#include <fstream>
+
+bool SearchSomething(const std::string& line) {
+  //expresion
+  std::regex regular("( )*//.*");
+  return std::regex_match(line,regular);
+}
+
+int main () {
+  //Regex Expressions
+  int count = 0;
+  std::string aux = "infile.cc.txt", line;
+  std::ifstream file_in;
+  file_in.open(aux);
+  while (!file_in.eof()) {
+    getline(file_in, line);
+    ++count;
+    std::cout <<((SearchSomething(line) )? "encontrada " : "NOOOOO ") << count << std::endl;
+    if (SearchSomething(line)) {
+      std::cout << "La encontré en la línea: " << count << std::endl;
+    } else {
+      continue;
+    }
+  }
+
+  
+  return 0;
+ }

@@ -1,0 +1,10 @@
+( )*(int)(.)*=(.)*(;)$   // encuentra la línea 30 INT
+( )*(int)(.)*(;)$     // encuentra línea 30 y 40 INT 
+
+int main(.)*     // encuentra el int main main
+
+
+( )*/\\*\\*(.)*   // Encuentra el comentario de tipo /*  BLOQUE
+( )*\\*/(.)*      //encuentra el cierre de comantrio den bloque BLOQUE
+
+( )*//.*      //encuentra el comentario de una línea

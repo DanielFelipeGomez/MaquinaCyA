@@ -1,0 +1,12 @@
+& -- Rejected
+a -- Accepted
+b -- Rejected
+aaaa -- Accepted
+abab -- Accepted
+aaaaaba -- Accepted
+aanda -- Rejected
+dna -- Accepted
+dn -- Rejected
+bbbbb -- Rejected
+bababa -- Rejected
+aaba -- Rejected

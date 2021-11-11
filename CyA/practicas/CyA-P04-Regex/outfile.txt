@@ -1,0 +1,27 @@
+PROGRAM: program_test.cc
+DESCRIPTION:
+/**
+
+VARIABLES:
+[Line 12] include <iostream>
+[Line 13] include <string>
+[Line 14] include "empty.h"
+[Line 21] INT:  rows_{0}
+[Line 22] INT:  cols_{0}
+[Line 37] INT:  my_var
+[Line 41] return 0;
+
+STATEMENTS
+[Line 28] LOOP: for
+[Line 33] LOOP: for
+[Line 36] LOOP: while
+
+MAIN:
+True
+
+COMMENTS:
+[Line 1] DESCRIPTION
+[Line 19] /// Function Member
+[Line 21] /// Data members
+[Line 28] // character will be a copy of the current string element (char)
+[Line 33] // element is a const reference to the currently iterated array element
