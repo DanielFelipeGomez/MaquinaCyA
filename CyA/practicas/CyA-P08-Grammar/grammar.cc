@@ -62,7 +62,6 @@ void Grammar::ReadConfigurationFile(const std::string& name_configuration) {
     }
     if (counter_line > 1) {
       for (int i = 0; i < non_terminals_.size(); ++i) {
-        // std::cout << line << std::endl;
         if (non_terminals_[i] == line[0]) {
           productions_.SetProductions(non_terminals_[i], 
               line.substr(5, line.length() - 5));
@@ -85,7 +84,7 @@ void Grammar::ReadDerivationFile(const std::string& name_derivarion) {
   std::string line;
   while (!in_derivation.eof()) {
     getline(in_derivation, line);
-    int num = line[4] - '0';
+    int num = std::stoi(line.substr(4,line.length()-4));
     char symbol = line[0];
     derivations_.push_back(std::make_pair(symbol, num));
   }

@@ -1,0 +1,38 @@
+#include <iostream>
+
+int **pmatriz;
+int n = 0, m = 0;
+
+void CrearMatriz() {
+  std::cout << "digite n\n";
+  std::cin >> n;
+  std::cout << "digite m\n";
+  std::cin >> m;
+
+  pmatriz = new int*[n];
+  for (int i = 0; i < n; ++i) {
+    pmatriz[i] = new int[m];
+  }
+
+  //rellenar la matriz
+  std::cout << "Introduzca valores de la matriz\n";
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < m; ++j) {
+      std::cout << "Digite el número [" << i << "][" << j << "]: ";
+      std::cin >> pmatriz[i][j];
+      // std::cin >> *(*(pmatriz + i) + j);
+    }
+  }
+}
+
+int main() {
+  CrearMatriz();
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < m; ++j) {
+      std::cout << pmatriz[i][j];
+    }
+    std::cout << "\n";
+  }
+
+  return 0;
+}

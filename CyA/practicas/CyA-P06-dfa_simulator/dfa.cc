@@ -20,7 +20,7 @@ void Dfa::FillTransitionTable() { transition_table_ = {destination_state_}; }
 
 void Dfa::CheckAccepted() {
   RemoveDuplicateElements();
-  CheckNumberTransition();
+  //CheckNumberTransition();
   for (int k = 0; k < strings_to_analyze_.size(); ++k) {
     std::string string = strings_to_analyze_[k].first;
     int state = start_state_;
@@ -85,7 +85,6 @@ void Dfa::SetDestinationState(const int& state) {
 void Dfa::SetDfaInformation(const int& element) {
   dfa_information_.push_back(element);
 }
-tar -czvf p06_nombre_apellidos.tgz p06_dfa_simulator
 
 int Dfa::GetSizeDfaInformation() { return dfa_information_.size(); }
 
