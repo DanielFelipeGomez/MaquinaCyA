@@ -1,0 +1,7 @@
+no estoy seguro de como va la declaracion del destructor de las abstractas y las dervadas
+
+revisar que deberian tener lpos detructores
+
+
+
+grid derivados su destructor debe tener codigo dentro para la liberar la memroia 
