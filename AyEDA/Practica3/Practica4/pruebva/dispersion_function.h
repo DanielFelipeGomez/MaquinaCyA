@@ -1,7 +1,7 @@
 /**
  * @file dispersion_function.h
  * @author Daniel Felipe Gomez Aristizabal (alu0101438139@ull.edu.es)
- * @brief 
+ * @brief Clase abstracta de la que derivan las funciones de dispersión
  * @version 0.1
  * @date 2022-04-02
  * 

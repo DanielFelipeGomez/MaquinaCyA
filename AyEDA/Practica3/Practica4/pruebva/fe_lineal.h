@@ -18,7 +18,20 @@
 template<class Key>
 class feLineal: public ExplorationFunction<Key> {
  public:
+  /**
+   * @brief Constructor de la clase por defecto
+   * 
+   */
   feLineal(){}
+  /**
+   * @brief Sobrecarga del operador función en el que se implementa la 
+   * operación para calcular el desplazamiento que se debe sumar a la 
+   * dirección de la tabla. Simplemente retorna el indice dado.
+   * 
+   * @param key 
+   * @param i 
+   * @return unsigned 
+   */
   unsigned operator()(const Key& key, unsigned indice) const {
     return indice;
   }

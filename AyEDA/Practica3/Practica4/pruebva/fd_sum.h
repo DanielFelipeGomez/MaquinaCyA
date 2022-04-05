@@ -1,7 +1,7 @@
 /**
  * @file fd_sum.h
  * @author Daniel Felipe Gomez Aristizabal (alu0101438139@ull.edu.es)
- * @brief 
+ * @brief Clase derivada que implemta la función des desipersión Basada en suma
  * @version 0.1
  * @date 2022-04-02
  * 
@@ -18,7 +18,20 @@
 template<class Key>
 class fdSum: public DispersionFunction<Key> {
  public:
+  /**
+  * @brief Constructor de la clase, que recibe por parámetro el tamaño de 
+  * la tabla de hash
+  * 
+  * @param table_size 
+  */
   fdSum(const unsigned table_size): table_size_(table_size){}
+  /**
+   * @brief Sobrecarga del operador función, en que se implementa el método 
+   * para retornar la dirección
+   * 
+   * @param key 
+   * @return unsigned 
+   */
   unsigned operator()(const Key& key) const {
     int div_key = key, aux1 = 0, dir = 0 ;
     while (div_key > 0){ 

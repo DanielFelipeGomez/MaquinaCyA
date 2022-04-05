@@ -18,7 +18,21 @@
 template<class Key>
 class feQuadratic: public ExplorationFunction<Key> {
  public:
+  /**
+   * @brief Constructor de la clase por defecto
+   * 
+   */
   feQuadratic(){}
+  /**
+   * @brief Sobrecarga del operador función en el que se implementa la 
+   * operación para calcular el desplazamiento que se debe sumar a la 
+   * dirección de la tabla. Simplemente retorna la multiplicación del 
+   * indice por si mismo.
+   * 
+   * @param key 
+   * @param i 
+   * @return unsigned 
+   */
   unsigned operator()(const Key& key, unsigned i) const {
     return (i*i);
   }

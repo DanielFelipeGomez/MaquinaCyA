@@ -22,6 +22,8 @@
 #include "fe_redispersion.h"
 
 int main() {
+
+  // Solicitamos los datos a l usuario
   int table_size = 0, type_dispersion = 0, type_dispersion_func = 0, block_size = 0, type_exploration = 0;
   std::cout << "Inserte el tamaño de la tabla: " << std::endl;
   std::cin >> table_size;
@@ -30,6 +32,8 @@ int main() {
   std::cout << "Que dispersión desea usar:\n1. Abierta\n2. Cerrada" << std::endl;
   std::cin >> type_dispersion;
 
+
+  // Creamos la función de dispersión que el usario haya elegido
   DispersionFunction<long>* ptfd;
   switch (type_dispersion_func) {
   case 1 : // module
@@ -49,6 +53,8 @@ int main() {
 
   ExplorationFunction<long>* ptfe = nullptr;
 
+
+  // Creamos la función de exploración que el usario haya elegido
   if (type_dispersion == 2) {
     std::cout << "Inserte el tamaño del bloque: " << std::endl;
     std::cin >> block_size;
@@ -73,6 +79,7 @@ int main() {
     }
   }
   
+  // Solicitamos valores a insertar en la tabla de hash
   HashTable<long> table(table_size, ptfd, ptfe, block_size);
   int num_insert = 0;
   std::cout << "Digite el número de valores que quiera insertar:" << std::endl;
@@ -84,25 +91,6 @@ int main() {
     table.Insert(value);
   }
 
-  table.Insert(3);
-  table.Insert(5);
-  table.Insert(3);
-  table.Insert(6);
-  table.Insert(7);
-  table.Insert(9);
-  table.Insert(10);
-  table.Insert(1111);
-  table.Insert(222);
-  table.Insert(5);
-  table.Insert(12);
-  table.Insert(2002);
+  // Imprimimos la tabla
   table.Print();
-  //HashTable<int> an(table_size,type_dispersion_func);
-  
-
-  ///Crear objeto segun la fución  de dispersión elegida
-     /// Puede que tambien se deba crear el objeto que imple,menta la función de exploración (CERRADA)
-  ///Tabla hash con el tipo de Clvae=long y los parámetros especificados por el usario
-  ///menú que permite insertasrt y buscar los valores de clave indicados por el usario, y muestra los resultados de la operación
-
 }

@@ -1,7 +1,7 @@
 /**
  * @file exploration_function.h
  * @author Daniel Felipe Gomez Aristizabal (alu0101438139@ull.edu.es)
- * @brief 
+ * @brief Clase abstracta de la que derivan las diferentes funciones de exploración
  * @version 0.1
  * @date 2022-04-02
  * 

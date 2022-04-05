@@ -1,7 +1,8 @@
 /**
  * @file sequence.h
  * @author Daniel Felipe Gomez Aristizabal (alu0101438139@ull.edu.es)
- * @brief 
+ * @brief Clase abtracta que se encarga de el almacenamiento individual 
+ * de la tabla de hash
  * @version 0.1
  * @date 2022-04-03
  * 

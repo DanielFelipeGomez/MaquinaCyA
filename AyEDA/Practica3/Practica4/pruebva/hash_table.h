@@ -29,6 +29,15 @@
 template<class Key>
 class HashTable{
  public:
+  /**
+  * @brief Constructor de la clase HashTable, inicializa todos sus atributos,
+  * según los parámetros que se le hayan proporcionado
+  * 
+  * @param table_size 
+  * @param fd 
+  * @param fe 
+  * @param block_size 
+  */
   HashTable(int table_size, DispersionFunction<Key>* fd, ExplorationFunction<Key>* fe = nullptr, int block_size = 0) {
     table_size_ = table_size;
     fe_ = fe; 
@@ -46,6 +55,11 @@ class HashTable{
   }
   bool Search(const Key& key) const;
   bool Insert(const Key& key);
+  /**
+   * @brief Imprime los indices de la tbal de hash en vertical y llama a 
+   * imprimir cada uno de sus respectivos sequence
+   * 
+   */
   void Print() {
     for (int i = 0; i < table_size_; ++i) {
       std::cout << i << ")";
@@ -54,15 +68,24 @@ class HashTable{
     }
   }
  private:
-  int table_size_;  ///especificar en el costructor
-  Sequence<Key> **table;   //// revisar, la idea seria qu fuera un vetor con punteros sequuence  y su tmasañlo dsea table size
-  DispersionFunction<Key>* fd_; ///se especifica en el contructor de la tabla
-  ExplorationFunction<Key>* fe_;  /// en abierta asignar valor nullptr;
-  int block_size_ = 0;  /// en el construcvtor poner por defecto 0 si es abierta
-
+  int table_size_;  
+  Sequence<Key> **table;   
+  DispersionFunction<Key>* fd_; 
+  ExplorationFunction<Key>* fe_;  
+  int block_size_ = 0;  
 };
 
-
+/**
+ * @brief Método que se encarga de generar la dirección a partir de la función 
+ * de dispersión y la clave y busca usarle de una forma u otra si es 
+ * dispersión abierta o cerrada. Tras encontrar el elemento retorna true o 
+ * false si lo ha encontrado o no respectivamente.
+ * 
+ * @tparam Key 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool HashTable<Key>::Search(const Key& key) const {
   int dir = fd_(key);
@@ -84,7 +107,18 @@ bool HashTable<Key>::Search(const Key& key) const {
   
 }
 
-
+/**
+ * @brief  Se encarga de calcular la dirección en la tbla de hash haciendo uso 
+ * de la función de dispersión y de su clave, luego verifica si el elemento no
+ * esta ya en la tabla, si no esta lleno el bloque (en caso de dispersión  
+ * cerrada) inserta, de lo contrario usa el desplazamiento con la fuinción de 
+ * exploración. Si no simplemente inserta (caso de dispersión abierta)
+ * 
+ * @tparam Key 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool HashTable<Key>::Insert(const Key& key) {
   int dir = fd_->operator()(key);

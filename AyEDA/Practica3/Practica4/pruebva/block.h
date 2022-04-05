@@ -1,7 +1,8 @@
 /**
  * @file block.h
  * @author Daniel Felipe Gomez Aristizabal (alu0101438139@ull.edu.es)
- * @brief 
+ * @brief Clase derivada de Sequence, donde se implemeta la función de 
+ * dispersión cerrrada
  * @version 0.1
  * @date 2022-04-03
  * 
@@ -25,6 +26,10 @@ class Block: public Sequence<Key>{
   bool Search(const Key& key) const;
   bool Insert(const Key& key);
   bool IsFull() const;
+  /**
+   * @brief Método que recorre todo el bloque y lo va imprimiendo
+   * 
+   */
   void Print() {
     for (int i = 0; i < block_size_; ++i) {
       if (synonyms_[i] == NULL) {
@@ -80,6 +85,14 @@ bool Block<Key>::Search(const Key& key) const {
   return false;
 }
 
+/**
+ * @brief Método que comprueba no esté el valor previamente, si no está, lo inserta
+ * 
+ * @tparam Key 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool Block<Key>::Insert(const Key& key) {
   if (!Search(key)) {
@@ -93,7 +106,13 @@ bool Block<Key>::Insert(const Key& key) {
   return false;
 }
 
-
+/**
+ * @brief Método que se encarga de verificar que el bloque no esté lleno
+ * 
+ * @tparam Key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool Block<Key>::IsFull() const {
   for (int i = 0; i < block_size_; ++i) {
