@@ -14,9 +14,6 @@
 #include "sort_func.h"
 
 
-
-
-
 template<class Key>
 class RadixSort : public SortClass<Key> {
  public:
@@ -28,17 +25,35 @@ class RadixSort : public SortClass<Key> {
   int size_vect_;
 };
 
+/**
+ * @brief Constructor por defecto de la clase
+ * 
+ * @tparam Key 
+ */
 template<class Key>
 RadixSort<Key>::RadixSort() {
 
 }
 
+/**
+ * @brief Constructor que recibe el vector por referencia y su tamaño
+ * 
+ * @tparam Key 
+ * @param vector 
+ * @param size_vect 
+ */
 template<class Key>
 RadixSort<Key>::RadixSort(std::vector<Key> &vector, int size_vect) {
   vector_ = vector;
   size_vect_ = size_vect;
 }
 
+/**
+ * @brief Método para ordenar el vector, llama a su función de plantilla 
+ * encargada de hacer la orddenación
+ * 
+ * @tparam Key 
+ */
 template<class Key>
 void RadixSort<Key>::Sort(){
   

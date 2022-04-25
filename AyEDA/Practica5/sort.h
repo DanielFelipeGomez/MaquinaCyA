@@ -18,6 +18,11 @@
 template<class Key>
 class SortClass {
  public:
+  /**
+   * @brief Método virtual de la clase abstracta, que se implementa 
+   * en las clases herederas
+   * 
+   */
   virtual void Sort() = 0;
 
 };

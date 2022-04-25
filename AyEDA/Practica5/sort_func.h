@@ -11,6 +11,8 @@
 
 #pragma once
 
+#define __COMMENTS__
+
 #include <vector>
 #include <algorithm>
 #include <iostream>
@@ -18,59 +20,94 @@
 #include <list>
 
 
-
+/**
+ * @brief Función auxiliar para la recursividad de la ordenación
+ * HeapSort encargada de dividir los respectivos hijos de izquierda 
+ * a derecha
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ * @param i 
+ */
 template <typename Type>
 void Heapify(std::vector<Type> &vector, int size, int i) {
-    int largest = i; 
-    int l = 2 * i + 1; 
-    int r = 2 * i + 2; 
-  
-    if (l < size && vector[l] > vector[largest]) {
-      largest = l;
-    }
-  
-    if (r < size && vector[r] > vector[largest]){
-      largest = r;
-    }
+  int largest = i; 
+  int l = 2 * i + 1; 
+  int r = 2 * i + 2; 
 
-    if (largest != i) {
-      std::swap(vector[i], vector[largest]);
-      Heapify(vector, size, largest);
-    }
+  if (l < size && vector[l] > vector[largest]) {
+    largest = l;
+  }
+
+  if (r < size && vector[r] > vector[largest]){
+    largest = r;
+  }
+  if (largest != i) {
+    std::swap(vector[i], vector[largest]);
+    Heapify(vector, size, largest);
+  }
 
 }
 
+/**
+ * @brief Función encargada de imprimir por pantalla el vertor que se
+ * pase por parámetros
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ */
+template <typename Type>
+void PrintVector(std::vector<Type> &vector, int size) {
+  int i = 0;
+  for (i; i < size-1; ++i) {
+    std::cout << vector[i] << " , ";
+  }
+  std::cout << vector[i] << std::endl;
+}
+
+/**
+ * @brief Función HeapSort, llama recursivamente a Heapify para resolver el 
+ * árbol binario y ordenar un vector dado por parámetros
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ * @return std::vector<Type> 
+ */
 template <typename Type>
 std::vector<Type> HeapSortFunct(std::vector<Type> &vector, int size) {
   for (int i = size / 2 - 1; i >= 0; i--) {
     Heapify(vector, size, i);
-    int j = 0;
-    for (j; j < vector.size()-1; ++j) {
-      std::cout << vector[j] << " , ";
-    }
-    std::cout << std::endl;
+    #ifdef __COMMENTS__
+    PrintVector(vector,size);
+    #endif
   }
   
   for (int i = size - 1; i >= 0; --i) {
     std::swap(vector[0], vector[i]);
     Heapify(vector, i, 0);
-      int j = 0;
-    for (j; j < vector.size()-1; ++j) {
-    std::cout << vector[j] << " , ";
-    }
-    std::cout << std::endl;
+    #ifdef __COMMENTS__
+    PrintVector(vector,size);
+    #endif
   }
   
   return vector;
 }
 
+/**
+ * @brief Función que implementa el ordenamiento QuickSort llamandose 
+ * rescursivamente, ordena un vector dado por parámetros
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param start 
+ * @param end 
+ * @return std::vector<Type> 
+ */
 template <typename Type>
 std::vector<Type> QuickSortFunct(std::vector<Type> &vector, int start, int end) {
-  int j = 0;
-  for (j; j < vector.size()-1; ++j) {
-    std::cout << vector[j] << " , ";
-  }
-  std::cout << vector[j] << std::endl;
   int i = start ; int f = end ;
   int p = vector[(i+f)/2] ;
   while (i <= f){
@@ -84,12 +121,10 @@ std::vector<Type> QuickSortFunct(std::vector<Type> &vector, int start, int end) 
       std::swap(vector[i],vector[f]) ;
       i++ ; 
       f-- ;
+    #ifdef __COMMENTS__
+    PrintVector(vector,vector.size());
+    #endif
     }
-    int j = 0;
-    for (j; j < vector.size()-1; ++j) {
-      std::cout << vector[j] << " , ";
-    }
-    std::cout << vector[j] << std::endl;
   }
   if (start < f) {
     QuickSortFunct(vector, start, f) ; 
@@ -100,6 +135,16 @@ std::vector<Type> QuickSortFunct(std::vector<Type> &vector, int start, int end) 
   return vector;
 }
 
+/**
+ * @brief Función que implementa la ordenación ShellSort, consigue ordenar 
+ * un vector que se pasa por parámetros
+ * 
+ * @tparam Type 
+ * @param delta 
+ * @param vector 
+ * @param size 
+ * @return std::vector<Type> 
+ */
 template <typename Type>
 std::vector<Type> ShellSortFunct(int delta, std::vector<Type> &vector, int size) {
   int x = 0, j = 0;
@@ -115,22 +160,39 @@ std::vector<Type> ShellSortFunct(int delta, std::vector<Type> &vector, int size)
   return vector;
 }
 
+/**
+ * @brief Función que dado un vector por parámetros, lo reccore y retorna el 
+ * mayor de los valores encontrados
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ * @return Type 
+ */
 template <typename Type>
 Type GetMax(std::vector<Type> &vector, int size) {
   Type max = vector[0];
   for (int i = 1; i < size; ++i) {
-      if (vector[i] > max){
-          max = vector[i];
-      }
+    if (vector[i] > max){
+      max = vector[i];
+    }
   }
-    
   return max;
 }
 
+/**
+ * @brief Función auxiliar para el funcionamiento de la función de 
+ * ordenación RadixSort
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ * @param exp 
+ */
 template <typename Type>
 void CountSort(std::vector<Type> &vector, int size, int exp) {
-   std::vector<Type> output; 
-   output.resize(size);
+  std::vector<Type> output; 
+  output.resize(size);
   int i, count[10] = {0};
  
   for (i = 0; i < size; ++i){
@@ -142,8 +204,8 @@ void CountSort(std::vector<Type> &vector, int size, int exp) {
   }
 
   for (i = size - 1; i >= 0; --i) {
-      output[count[(vector[i] / exp) % 10] - 1] = vector[i];
-      count[(vector[i] / exp) % 10]--;
+    output[count[(vector[i] / exp) % 10] - 1] = vector[i];
+    count[(vector[i] / exp) % 10]--;
   }
   
   for (i = 0; i < size; ++i){
@@ -151,43 +213,60 @@ void CountSort(std::vector<Type> &vector, int size, int exp) {
   } 
 }
 
+/**
+ * @brief Función que implementa el método de ordenamiento RadixSort, consigue 
+ * ordenar un vector dado por parámetros
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ * @return std::vector<Type> 
+ */
 template <typename Type>
 std::vector<Type> RadixSortFunct(std::vector<Type> &vector, int size) {
   int max = GetMax(vector, size);
 
   for (int exp = 1; max / exp > 0; exp *= 10){
     CountSort(vector, size, exp);
-    int k = 0;
-    for (k; k < size - 1; ++k) {
-      std::cout << vector[k] << " , ";
-    }
-    std::cout << vector[k] << std::endl;
+    #ifdef __COMMENTS__
+    PrintVector(vector,size);
+    #endif   
   }
    
   return vector;
 }
 
-
+/**
+ * @brief Función que implementa el método de ordenamiento SelectionSort, 
+ * consigue ordenar un vector que se pasa por parámetros
+ * 
+ * @tparam Type 
+ * @param vector 
+ * @param size 
+ * @return std::vector<Type> 
+ */
 template <typename Type>
 std::vector<Type> SelectionFunct(std::vector<Type> &vector, int size) {
   int min=0, x = 0;
   for (int i = 0; i < size; ++i) {
-  for (int i = 0; i < size; ++i){
-	  min = i ;
-	  for (int j = i+1; j < size; ++j){
-      if (vector[j] < vector[min]){
-	      min = j ;
-      }
-    } 
-	  x = vector[min] ;
-	  vector[min] = vector[i] ;
-	  vector[i] = x ;
-	}
-  for(int i = 0; i < size; ++i) {
-    std::cout << vector[i] << " " ;
+    for (int i = 0; i < size; ++i){
+	    min = i ;
+	    for (int j = i+1; j < size; ++j){
+        if (vector[j] < vector[min]){
+	        min = j ;
+          #ifdef __COMMENTS__
+          PrintVector(vector,size);
+          #endif  
+        }
+      } 
+	    x = vector[min] ;
+	    vector[min] = vector[i] ;
+	    vector[i] = x ;
+	  }
   }
-  std::cout << std::endl; 
-  }
+  #ifdef __COMMENTS__
+  PrintVector(vector,size);
+  #endif 
   return vector;
 }
 
