@@ -21,6 +21,7 @@
 #include "selection.h"
 #include "shell_sort.h"
 #include "heap_sort.h"
+#include "modify.h"
 #include "sort_func.h"
 
 template<class Key>
@@ -94,6 +95,9 @@ Context<Key>::Context(short type_func, int size_vect, short random_option) {
       break;
     case 5 : 
       sort_pointer_ = new RadixSort<int>(vector_, size_vect_);
+      break;
+    case 6 : 
+      sort_pointer_ = new Modify<int>(vector_, size_vect_);
       break;
     default:
       break;
