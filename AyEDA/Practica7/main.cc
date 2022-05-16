@@ -17,10 +17,29 @@
 using Key = int;
 int main() {
   short option;
-  AB<Key>* Tree = new ABB<Key>;
+  AB<Key>* Tree;
+  std::cout << "Indique que árbol desea usar.\n[0] Salir\n[1] ABE\n[2] ABB" << std::endl;
+  std::cin >> option;
+  switch (option) {
+  case 0:
+    return 0;
+    break;
+  case 1:
+    Tree = new ABE<Key>;
+
+    break;
+  case 2:
+    Tree = new ABB<Key>;
+    break;
+  
+  default:
+    break;
+  }
   while (true) {
     Key clave = 0;
-    std::cout << "[0] Salir\n[1] Insertar clave\n[2] Buscar clave\n[3] eliminar clave\n[4] Mostrar árbol inorden" << std::endl;
+    std::cout << "[0] Salir\n[1] Insertar clave\n[2] Buscar clave\n[3] " <<
+                "Eliminar clave\n[4] Mostrar árbol inorden\n[5] Mostrar árbol" <<
+                std::endl;
     std::cin >> option;
     switch (option) {
     case 0:
@@ -55,7 +74,9 @@ int main() {
       Tree->InOrden();
       std::cout << std::endl;
       break;
-    
+    case 5:
+      std::cout << Tree << std::endl;
+      break;
     default:
       break;
     }

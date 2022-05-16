@@ -25,6 +25,7 @@ class ABE : public AB<Key> {
   NodeB<Key>* SearchBranch(NodeB<Key>* node, Key key);
   bool Insert(const Key& key);
   void InsertEquilibrate(NodeB<Key>* const node, Key const& key);
+  //bool Search(Key const &key) const;
   bool Search(const Key& key);
   bool Erase(const Key& key);
   
@@ -120,6 +121,15 @@ bool ABE<Key>::Insert(const Key& key) {
   return true;
 }
 
+/**
+ * @brief Método no implementado para la clase, retorna falso para no 
+ * influir y respetar el polimorfismo
+ * 
+ * @tparam Key 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool ABE<Key>::Erase(const Key& key) {
   return false;
@@ -137,16 +147,29 @@ bool ABE<Key>::Erase(const Key& key) {
  */
 template<class Key>
 bool ABE<Key>::Search(const Key& key) {
-  NodeB<Key>* node = this->GetRoot();
-  if (node == nullptr) {
-    return false;
+  std::queue<std::pair<NodeB<Key>*,int>> queue;
+  int actual_level = 0;
+  std::pair<NodeB<Key>*,int> aux(this->GetRoot(), 0);
+  queue.push(aux);
+  while (!queue.empty()) { 
+    aux = queue.front();
+    queue.pop();
+    if (aux.second > actual_level) {
+      actual_level = aux.second;
+    }
+    if (aux.first != nullptr) {
+      if (aux.first->GetInformation() == key) {
+        return true;
+      } 
+      std::pair<NodeB<Key>*,int> node_and_level(aux.first->GetLeft(), aux.second + 1);
+      queue.push(node_and_level); 
+      node_and_level = {aux.first->GetRight(),aux.second + 1};
+      queue.push(node_and_level);
+    } else {
+
+    }
   }
-  if (key == node->GetInformation()) {
-    return true;
-  }
-  if (SearchBranch(node->GetLeft(), key) || SearchBranch(node->GetRight(), key)) {
-    return true;
-  }
+  return false;
 }
 
 /**

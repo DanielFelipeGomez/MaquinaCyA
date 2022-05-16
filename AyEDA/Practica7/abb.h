@@ -71,6 +71,15 @@ const int ABB<Key>::BranchSize(NodeB<Key>* node) {
   return (1 + BranchSize(node->GetLeft()) + BranchSize(node->GetRight()));
 }
 
+/**
+ * @brief Método encargado de insertar de manera recursiva en el árbol los 
+ * valores que se indiquen por parámetros, respetando si son mayores o 
+ * menores que el nodo de arranque
+ * 
+ * @tparam Key 
+ * @param node 
+ * @param key 
+ */
 template<class Key>
 void ABB<Key>::InsertABB(NodeB<Key>*& node, Key key) {
   
@@ -116,6 +125,14 @@ bool ABB<Key>::Insert(const Key& key) {
   return true;
 }
 
+/**
+ * @brief Método encargado de remplazar un nodo por otro, cuidando de mantener 
+ * a sus nodos hijos
+ * 
+ * @tparam Key 
+ * @param replacement_node 
+ * @param node_to_erase 
+ */
 template<class Key>
 void ABB<Key>::TakeHisPlace(NodeB<Key>*& replacement_node, NodeB<Key>*& node_to_erase) {
   if (replacement_node->GetRightR() != nullptr) {
@@ -127,7 +144,16 @@ void ABB<Key>::TakeHisPlace(NodeB<Key>*& replacement_node, NodeB<Key>*& node_to_
   }
 }
 
-
+/**
+ * @brief Método encargado de eliminar de manera recursiva el nodo que le 
+ * corresponda la clave dada por parámetros
+ * 
+ * @tparam Key 
+ * @param node 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool ABB<Key>::EraseSubABB(NodeB<Key>*& node, Key key) {
   if (node == nullptr) {
@@ -145,11 +171,21 @@ bool ABB<Key>::EraseSubABB(NodeB<Key>*& node, Key key) {
       node = node->GetRightR();
     } else {
       TakeHisPlace(node->GetLeftR(), node_to_erase);
-      delete(node_to_erase);
+      //delete(node_to_erase);
     }
   }
+  return true;
 }
 
+/**
+ * @brief Método que permite la implementación del método de borrado definido 
+ * en la clase abstracta
+ * 
+ * @tparam Key 
+ * @param key 
+ * @return true 
+ * @return false 
+ */
 template<class Key>
 bool ABB<Key>::Erase(const Key& key) {
   return (EraseSubABB(this->GetRootR(), key));
